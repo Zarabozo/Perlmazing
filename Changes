@@ -8,3 +8,5 @@ Revision history for Perlmazing
          Bugfix for older Perl versions
 1.2806   2016-02-25
          Bugfix for older Perl versions
+1.2808   2016-02-25
+         Bugfix in function dir affecting Linux

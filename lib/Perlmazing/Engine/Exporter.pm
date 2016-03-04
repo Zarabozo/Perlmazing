@@ -2,7 +2,7 @@ package Perlmazing::Engine::Exporter;
 use strict;
 use warnings;
 use Carp;
-our $VERSION = '1.2806';
+our $VERSION = '1.2808';
 my $package = __PACKAGE__;
 my $imports;
 

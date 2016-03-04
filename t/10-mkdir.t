@@ -5,6 +5,7 @@ use strict;
 use warnings;
 use Test::More tests => 3;
 use Perlmazing;
+use File::Spec;
 
 my $dir = 'mkdir_test_directory';
 
@@ -15,12 +16,15 @@ if (-e $dir) {
 
 is ((-e $dir), undef, "$dir doesn't exist");
 
-mkdir 'mkdir_test/one/two/three';
+mkdir File::Spec->catdir(qw(mkdir_test one two three));
 my $content = join "\n", dir 'mkdir_test', 1;
 
-is 'mkdir_test/one
-mkdir_test/one/two
-mkdir_test/one/two/three', $content, 'directories created succesfully';
+my $should_be = '';
+$should_be .= File::Spec->catdir(qw(mkdir_test one))."\n";
+$should_be .= File::Spec->catdir(qw(mkdir_test one two))."\n";
+$should_be .= File::Spec->catdir(qw(mkdir_test one two three));
+
+is $content, $should_be, 'directories created succesfully';
 
 if (-e $dir) {
 	rmdir $dir;

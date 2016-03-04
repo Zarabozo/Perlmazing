@@ -1,71 +1,68 @@
 use Perlmazing;
+use File::Spec;
 
 sub main {
-	my ($path, $recursive, $callback) = ('.', 0, '');
+	my ($path, $recursive, $callback);
+	my $usage = 'Usage: dir ($path, $boolean_recursive, $coderef_callback)';
+	my @coderefs = grep { isa_code $_ } @_;
+	my @args = grep { not isa_code $_ } @_;
+	croak "More than one coderef received in arguments, don't know which one to use as callback - $usage" if @coderefs > 1;
+	croak "Too many non coderef arguments received - $usage" if @args > 2;
 	my $wantarray = wantarray;
+	$callback = shift @coderefs;
+	($path, $recursive) = ('.', 0);
+	@_ = @args;
 	if (@_ == 1) {
-		if (ref($_[0]) and ref($_[0]) eq 'CODE') {
-			$callback = $_[0];
-		} elsif (-d $_[0]) {
-			$path = $_[0];
-		} else {
-			$recursive = 1;
-		}
-	} elsif (@_ == 2) {
 		if (-d $_[0]) {
 			$path = $_[0];
-			if (ref($_[1]) and ref($_[1]) eq 'CODE') {
-				$callback = $_[1];
-			} else {
-				$recursive = $_[1];
-			}
 		} else {
-			if (ref($_[0]) and ref($_[0]) eq 'CODE') {
-				$callback = $_[0];
-				$recursive = $_[1];
-			} elsif (ref($_[1]) and ref($_[1]) eq 'CODE') {
-				$recursive = $_[0];
-				$callback = $_[1];
-			} else {
-				croak "I don't understand your parameters. None of them are a valid path and none of them is a callback (coderef).";
-			}
+			$recursive = $_[0] ? 1 : 0;
 		}
-	} elsif (@_ == 3) {
-		$path = $_[0];
-		if (ref($_[1]) and ref($_[1]) eq 'CODE') {
-			$callback = $_[1];
-			$recursive = $_[2];
-		} else {
+	} elsif (@_ == 2) {
+		if (defined($_[0]) and -d $_[0]) {
+			$path = $_[0];
 			$recursive = $_[1];
-			$callback = $_[2];
+		} elsif (defined($_[1]) and -d $_[1]) {
+			$path = $_[1];
+			$recursive = $_[0];
+		} else {
+			croak "None of your parameters seems to be a valid/readable path";
 		}
 	}
-	croak "Path '$path' is not a valid path or cannot be read" unless -d $path;
-	croak "The callback parameter must be a code reference" if $callback and (not ref($callback) or ref($callback) ne 'CODE');
-	$path =~ s|[/\\]+$||;
+	$path = File::Spec->catdir(File::Spec->splitdir($path));
 	_dir($path, $recursive, $callback, $wantarray);
 }
 
 sub _dir {
 	my ($path, $recursive, $callback, $wantarray) = @_;
 	if (opendir my $d, $path) {
-		my @results;
-		for my $i (readdir $d) {
-			next if $i eq '.' or $i eq '..';
-			$i = "$path/$i";
+		my (@folders, @files, @results);
+		my $process = sub {
+			my $i = shift;
+			$callback->($i) if $callback;
 			push (@results, $i) if $wantarray;
-			if ($callback) {
-				$callback->($i);
+		};
+		for my $i (sort numeric readdir $d) {
+			my $item = File::Spec->catdir($path, $i);
+			if (-d $item) {
+				next if $i eq '.' or $i eq '..';
+				push @folders, $item;
+			} else {
+				push @files, $item;
 			}
-			if (-d $i and $recursive) {
+		}
+		for my $i (@folders) {
+			$process->($i);
+			if ($recursive) {
 				my @r = _dir($i, $recursive, $callback, $wantarray);
 				push (@results, @r) if $wantarray;
 			}
 		}
-		if ($wantarray) {
-			@results = sort numeric @results;
-			return @results;
+		for my $i (@files) {
+			$process->($i);
 		}
+		
+		return @results if $wantarray
 	} else {
 		warn "Cannot read path $path: $!";
 	}
