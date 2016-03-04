@@ -5,7 +5,7 @@ use Carp;
 use Scalar::Util qw(set_prototype);
 use Taint::Util 'untaint';
 use Data::Dump 'dump';
-our $VERSION = '1.2808';
+our $VERSION = '1.2810';
 my $found_symbols;
 my $loaded_symbols;
 my $precompile_symbols;
@@ -385,7 +385,7 @@ The following is a list of methods you can call from C<Perlmazing::Engine>:
 
 =head2 found_symbols
 
-C<<my @symbols = Perlmazing::Engine->found_symbols($optional_namespace)>>
+C<< my @symbols = Perlmazing::Engine->found_symbols($optional_namespace) >>
 
 This method will return a list with all the symbols C<Perlmazing::Engine> found for a specific package/namespace. If you don't
 provide any arguments, then the current namespace will be used. The following is an example of it being used to export every
@@ -403,14 +403,14 @@ function from your module into its caller:
 
 =head2 loaded_symbols
 
-C<<my @symbols = Perlmazing::Engine->loaded_symbols($optional_namespace)>>
+C<< my @symbols = Perlmazing::Engine->loaded_symbols($optional_namespace) >>
 
 This method will return a list of the symbols for which its actual code has been already loaded.
 
 
 =head2 preload
 
-C<<Perlmazing::Engine->preload(@list_of_symbols_to_preload)>>
+C<< Perlmazing::Engine->preload(@list_of_symbols_to_preload) >>
 
 This method will load (completely, including their respective code) all of the symbols passed as argument. This is useful
 then you know you will need these symbols loaded from the begining, or maybe at compile time, for any reasons you may have.
@@ -418,7 +418,7 @@ then you know you will need these symbols loaded from the begining, or maybe at 
 
 =head2 precompile
 
-C<<Perlmazing::Engine->precompile>>
+C<< Perlmazing::Engine->precompile >>
 
 This method is similar to C<preload>, but while C<preload> works with any symbol name passed as argument, C<precompile> works
 with the symbols found in the I<precompile> folder described L<previously|Perlmazing::Engine/HOW TO USE>.

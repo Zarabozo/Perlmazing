@@ -56,7 +56,10 @@ close $in;
 
 sub check_cases {
 	for my $c (@cases) {
-		my $r = isa_scalar $c->[0] ? 1 : 0;
-		is $r, $c->[1], $c->[2];
+		SKIP: {
+			skip 'Requires perl >= 5.012', 1 if $c->[2] =~ /regexp/ and not $] >= 5.012;
+			my $r = isa_scalar $c->[0] ? 1 : 0;
+			is $r, $c->[1], $c->[2];
+		}
 	}
 }

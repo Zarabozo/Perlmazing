@@ -8,9 +8,9 @@ sub main {
 	if (not defined wantarray) {
 		foreach my $i (@_) {
 			no warnings;
-			defined($i) ? say $i : say '';
+			defined($i) ? print "$i\n" : print "\n";
 		}
-		say '' if not @_;
+		print "\n" if not @_;
 	} elsif (defined wantarray and not wantarray) {
 		my $res;
 		foreach my $i (@_) {
