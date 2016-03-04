@@ -34,9 +34,6 @@ WriteMakefile(
         #'ABC'              => 1.6,
         #'Foo::Bar::Module' => 5.0401,
     },
-	PERM_DIR => '755',
-	PERM_RW => '644',
-	PERM_RWX => '755',
-    dist  => { COMPRESS => 'gzip', SUFFIX => 'gz', },
+    dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES => 'Perlmazing-*' },
 );
