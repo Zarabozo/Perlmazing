@@ -1,7 +1,7 @@
 package Perlmazing;
 use Perlmazing::Engine;
 use Perlmazing::Engine::Exporter;
-our $VERSION = '1.28';
+our $VERSION = '1.2802';
 our @EXPORT = Perlmazing::Engine->found_symbols;
 
 Perlmazing::Engine->precompile;
@@ -27,7 +27,7 @@ __END__
 =pod
 =head1 NAME
 
-Perlmazing - A collection of helper functions powered by L<Perlmazing::Engine>.
+Perlmazing - A collection of helper functions powered by Perlmazing::Engine.
 
 =head1 SYNOPSIS
 

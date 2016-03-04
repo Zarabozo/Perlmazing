@@ -1,5 +1,4 @@
 use Perlmazing;
-use Modern::Perl;
 use List::Util;
 
 sub main {

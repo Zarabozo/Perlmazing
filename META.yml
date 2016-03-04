@@ -1,24 +1,47 @@
 ---
-abstract: A collection of helper functions powered by L<Perlmazing::Engine>.
+abstract: A collection of helper functions powered by Perlmazing::Engine.
 author:
 - Francisco Zarabozo <zarabozo@cpan.org>
 build_requires:
+  Carp: '0'
   Crypt::Rijndael: '0'
   Cwd: '0'
   Data::Dump: '0'
   Digest::MD5: '0'
   Encode: '0'
   Encoding: '0'
+  ExtUtils::MakeMaker: '0'
   File::Copy::Recursive: '0'
   File::Path: '0'
   List::Util: '0'
   Scalar::Util: '0'
+  Submodules: '0'
   Taint::Util: '0'
-  Test::More: '0'
   Time::Precise: '0'
   URI::Escape: '0'
+  strict: '0'
+  version: '0'
+  warnings: '0'
 configure_requires:
+  Carp: '0'
+  Crypt::Rijndael: '0'
+  Cwd: '0'
+  Data::Dump: '0'
+  Digest::MD5: '0'
+  Encode: '0'
+  Encoding: '0'
   ExtUtils::MakeMaker: '0'
+  File::Copy::Recursive: '0'
+  File::Path: '0'
+  List::Util: '0'
+  Scalar::Util: '0'
+  Submodules: '0'
+  Taint::Util: '0'
+  Time::Precise: '0'
+  URI::Escape: '0'
+  strict: '0'
+  version: '0'
+  warnings: '0'
 dynamic_config: 1
 generated_by: ExtUtils::MakeMaker version 6.98, CPAN::Meta::Converter version 2.150001
 license: perl
@@ -31,5 +54,24 @@ no_index:
   - t
   - inc
 requires:
+  Carp: '0'
+  Crypt::Rijndael: '0'
+  Cwd: '0'
+  Data::Dump: '0'
+  Digest::MD5: '0'
+  Encode: '0'
+  Encoding: '0'
+  ExtUtils::MakeMaker: '0'
+  File::Copy::Recursive: '0'
+  File::Path: '0'
+  List::Util: '0'
+  Scalar::Util: '0'
+  Submodules: '0'
+  Taint::Util: '0'
+  Time::Precise: '0'
+  URI::Escape: '0'
   perl: '5.006'
-version: '1.28'
+  strict: '0'
+  version: '0'
+  warnings: '0'
+version: '1.2802'
