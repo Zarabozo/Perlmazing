@@ -1,5 +1,4 @@
 use Perlmazing;
-use Carp;
 
 sub main {
 	my $file = shift;

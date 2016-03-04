@@ -1,6 +1,5 @@
 use Perlmazing;
 use Digest::MD5;
-use Carp;
 
 sub main {
 	my $file = shift;

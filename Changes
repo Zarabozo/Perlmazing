@@ -1,12 +1,8 @@
 Revision history for Perlmazing
 
-1.2    2016-01-16
-       First public version, released after several years of private use and development.
-1.22   2016-01-16
-       Minor adjustments for PAUSE
-1.24   2016-01-16
-       Minor adjustments for PAUSE
-1.26   2016-01-16
-       Minor adjustments for PAUSE
-1.28   2016-01-16
-       Minor adjustments for PAUSE
+1.2      2016-01-16
+         First public version, released after several years of private use and development.
+1.22 .. 1.2802
+         Minor adjustments for PAUSE
+1.2804   2016-02-24
+         Bugfix for older Perl versions

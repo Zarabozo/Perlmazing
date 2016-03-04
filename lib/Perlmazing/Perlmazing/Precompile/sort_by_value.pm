@@ -1,6 +1,22 @@
+BEGIN {
+	eval 'sub test_prototype (+) { 1 }; test_prototype(1);';
+	undef *test_prototype;
+	if (my $e = $@) {
+		if ($e =~ /Malformed prototype/) {
+			eval 'sub main (;\[@%]) { main_code(@_) }';
+			die $@ if $@;
+		} else {
+			die $e;
+		}
+	} else {
+		eval 'sub main (+) { main_code(@_) }';
+		die $@ if $@;
+	}
+}
+
 use Perlmazing;
 
-sub main (+) {
+sub main_code {
 	my $list = $_[0];
 	if (isa_hash $list) {
 		if (void_context()) {
@@ -32,3 +48,4 @@ sub main (+) {
 	}
 }
 
+1;

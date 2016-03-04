@@ -1,7 +1,7 @@
 package Perlmazing;
 use Perlmazing::Engine;
 use Perlmazing::Engine::Exporter;
-our $VERSION = '1.2802';
+our $VERSION = '1.2804';
 our @EXPORT = Perlmazing::Engine->found_symbols;
 
 Perlmazing::Engine->precompile;
