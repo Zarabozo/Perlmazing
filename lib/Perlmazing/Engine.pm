@@ -5,7 +5,7 @@ use Carp;
 use Scalar::Util qw(set_prototype);
 use Taint::Util 'untaint';
 use Data::Dump 'dump';
-our $VERSION = '1.22';
+our $VERSION = '1.24';
 my $found_symbols;
 my $loaded_symbols;
 my $precompile_symbols;
@@ -215,6 +215,7 @@ __END__
 
 Perlmazing::Engine - Have your functions load their code and associated modules only when needed, automagically.
 
+
 =head1 SYNOPSIS
 
 This module was written with one main goal in mind: to save time, processing and memory when a module is loaded
@@ -241,6 +242,7 @@ In order to use Perlmazing::Engine, you just do something like the following:
     # Now your functions are usable, but not loaded until called.
 
     1;
+
 
 =head1 HOW TO USE
 
@@ -282,6 +284,7 @@ would then look like this:
 
 C<MyModule::Clients> is now able to use the functions C<function_E> and C<function_F> by just calling C<use Perlmazing::Engine>.
 
+
 =head1 HOW FUNCTIONS SHOULD BE WRITTEN
 
 Besides residing on its own file in their respective C<Perlmazing> folder, and having a file name that is their exact actual function
@@ -292,6 +295,7 @@ and one of those functions happens to be the one you are writting in this file, 
 There are also two types of functions you can write, in terms of behavior and this is something comming from L<Perlmazing::Engine>.
 Basically, you get the regular type and the C<Listable> type. The regular type is simply any kind of subroutine,
 and it can simply do whatever you code it to do.
+
 
 =head1 REGULAR FUNCTIONS
 
@@ -308,7 +312,8 @@ C<./MyModule/Perlmazing/say_hello.pm> and will have the following content:
     
     1;
 
-=HEAD1 LISTABLE FUNCTIONS
+
+=head1 LISTABLE FUNCTIONS
 
 C<Listable> functions are all meant to follow this behavior:
 
@@ -365,15 +370,18 @@ The following is an example taken from the function C<escape_uri> from the L<Per
 That function will have all the behavior previously described for C<Listable> functions, but you don't need to think
 of that behavior here, C<Perlmazing::Engine> will do that for you and you will only work with C<$_[0]>.
 
+
 =head1 EXPORTS
 
 C<Perlmazing::Engine> doesn't export anything by default. In fact, so far none of its functions or methods are meant to be imported.
 If you are wondering about how to export functions from your own module (even if they work through C<Perlmazing::Engine>), then you
 will do so exactly as you would if you weren't using this module (e.g. using L<Exporter> or your favorite export module/method).
 
+
 =head1 METHODS
 
 The following is a list of methods you can call from C<Perlmazing::Engine>:
+
 
 =head2 found_symbols
 
@@ -392,11 +400,13 @@ function from your module into its caller:
     
     # Or, you could do that with @EXPORT_OK just to make them available for export.
     
+
 =head2 loaded_symbols
 
 C<my @symbols = Perlmazing::Engine->loaded_symbols($optional_namespace)>
 
 This method will return a list of the symbols for which its actual code has been already loaded.
+
 
 =head2 preload
 
@@ -405,6 +415,7 @@ C<Perlmazing::Engine->preload(@list_of_symbols_to_preload)>
 This method will load (completely, including their respective code) all of the symbols passed as argument. This is useful
 then you know you will need these symbols loaded from the begining, or maybe at compile time, for any reasons you may have.
 
+
 =head2 precompile
 
 C<Perlmazing::Engine->precompile>
@@ -412,15 +423,18 @@ C<Perlmazing::Engine->precompile>
 This method is similar to C<preload>, but while C<preload> works with any symbol name passed as argument, C<precompile> works
 with the symbols found in the I<precompile> folder described L<previously|Perlmazing::Engine/HOW TO USE>.
 
+
 =head1 AUTHOR
 
 Francisco Zarabozo, C<< <zarabozo at cpan.org> >>
+
 
 =head1 BUGS
 
 Please report any bugs or feature requests to C<bug-perlmazing at rt.cpan.org>, or through
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Perlmazing>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
+
 
 =head1 SUPPORT
 

@@ -2,7 +2,7 @@ package Perlmazing::Feature;
 use strict;
 use warnings;
 use version;
-our $VERSION = '1.22';
+our $VERSION = '1.24';
 our @ISA = qw(feature);
 
 sub import {
@@ -24,6 +24,7 @@ __END__
 
 Perlmazing::Feature - Use strict and warnigns and enable all modern features from your Perl version in a single call.
 
+
 =head1 SYNOPSIS
 
 This aims to be the equivalent of:
@@ -44,15 +45,18 @@ And, if you want the same thing for any module or scrit calling your module, the
 		Perlmazing::Feature->import;
 	}
 
+
 =head1 AUTHOR
 
 Francisco Zarabozo, C<< <zarabozo at cpan.org> >>
+
 
 =head1 BUGS
 
 Please report any bugs or feature requests to C<bug-perlmazing at rt.cpan.org>, or through
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Perlmazing>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
+
 
 =head1 SUPPORT
 
@@ -84,9 +88,11 @@ L<http://search.cpan.org/dist/Perlmazing/>
 =back
 
 
+
 =head1 ACKNOWLEDGEMENTS
 
 This module was inspired by L<latest> from Andy Armstrong. Some changes were made to accommodate the needs of L<Perlmazing>.
+
 
 =head1 LICENSE AND COPYRIGHT
 

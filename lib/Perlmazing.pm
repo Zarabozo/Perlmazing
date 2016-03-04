@@ -1,7 +1,7 @@
 package Perlmazing;
 use Perlmazing::Engine;
 use Perlmazing::Engine::Exporter;
-our $VERSION = '1.22';
+our $VERSION = '1.24';
 our @EXPORT = Perlmazing::Engine->found_symbols;
 
 Perlmazing::Engine->precompile;
@@ -64,6 +64,7 @@ that those functions are actually loaded into memory, they are just available to
 be loaded and processed as soon as the caller actually calls one of them. Please read the documentation
 of L<Perlmazing::Engine> to learn more about it.
 
+
 =head1 FUNCTIONS
 
 There are two types of functions in terms of behavior and this is something comming from L<Perlmazing::Engine>.
@@ -119,11 +120,13 @@ for my $i (@Perlmazing::EXPORT) {
 	pl "$i $is_listable";
 }
 
+
 =head2 aes_decrypt
 
 C<aes_decrypt($encrypted_data, $key)>
 
 Equivalent to MySQL's AES_DECRYPT function, 100% compatible with MySQL. Returns unencrypted data if successful.
+
 
 =head2 aes_encrypt
 
@@ -131,26 +134,32 @@ C<aes_encrypt($plain_data, $key)>
 
 Equivalent to MySQL's AES_ENCRYPT function, 100% compatible with MySQL. Returns encrypted (binary) data.
 
+
 =head2 carp
 
 Same as L<Carp::carp()|Carp>.
 
+
 =head2 cluck
 
 Same as L<Carp::cluck()|Carp>.
+
 
 =head2 copy
 
 Same as L<File::Copy::Recursive::rcopy()|File::Copy::Recursive>. Copies a file using the native OS file-copy implementation. Not to be confused
 with Perl's C<link>, which doesn't create an actual copy. It will recursively copy directories when passed as argument.
 
+
 =head2 croak
 
 Same as L<Carp::croak()|Carp>.
 
+
 =head2 cwd 
 
 Same as L<Cwd::cwd()>. Returns the current working directory.
+
 
 =head2 define
 
@@ -174,6 +183,7 @@ Converts any undefined element into an empty string. Useful when purposely avoid
         }
     }
     
+
 =head2 dir
 
 C<dir>
@@ -189,6 +199,7 @@ then the current working directory is used. C<$recursive> is a boolean value, is
 When true, then the contents of subdirectories are returned too. C<$callback> is also optional and most be a coderef.
 If provided, then it will be called on each element found in real time. It receives the current element as argument.
 
+
 =head2 dumped
 
 Same as L<Data::Dump::dump()|Data::Dump>. It will return a code dump of whatever you provide as argument.
@@ -200,12 +211,14 @@ For example:
     print dumped \%hash;
     print dumped $some_object;
 
+
 =head2 empty_dir
 
 C<empty_dir($path)>
 
 This is almost the same as L<File::Path::remove_tree()|File::Path>, except it will make the folder privided in C<$path>
 empty without removing C<$path> too.
+
 
 =head2 escape_html
 
@@ -222,6 +235,7 @@ Examples:
     
     my @array_B = escape_html @array_C;
     
+
 =head2 escape_uri
 
 I<Listable function>
@@ -240,6 +254,7 @@ Examples:
     escape_uri @queries;
 
 See also L<unescape_uri|Perlmazing/unescape_uri>.
+
 
 =head2 find_parent_classes
 
@@ -265,19 +280,23 @@ will print something like:
     LWP::MemberMixin
     UNIVERSAL
 
+
 =head2 get_time_from
 
 C<get_time_from(year => $year, month => $month, day => $day)>
 
 Same as L<Time::Precise::get_time_from()|Time::Precise/get_time_from>. Returns time in seconds including nanoseconds.
 
+
 =head2 gmtime
 
 Same as L<Time::Precise::gmtime()|Time::Precise/gmtime>. Returns time in seconds including nanoseconds.
 
+
 =head2 gmtime_hashref
 
 Same as L<Time::Precise::gmtime_hashref()|Time::Precise/gmtime_hashref>. Returns a hashref with current datetime elements.
+
 
 =head2 in_array
 
@@ -293,11 +312,13 @@ C<0>. So, the following is a safe case:
         print "Found $array[$index]";
     }
 
+
 =head2 is_array
 
 C<is_array($object)>
 
 Returns true if C<$object> is a pure arrayref. See also L<isa_array|Perlmazing/isa_array>.
+
 
 =head2 is_blessed
 
@@ -305,11 +326,13 @@ C<is_blessed($object)>
 
 Same as L<Scalar::Util::blessed()|Scalar::Util>. Returns the name of the package C<$object> is a blessed into, if blessed.
 
+
 =head2 is_code
 
 C<is_code($object)>
 
 Returns true if C<$object> is a pure coderef. See also L<isa_code|Perlmazing/isa_code>.
+
 
 =head2 is_email_address
 
@@ -317,11 +340,13 @@ C<is_email_address($string)>
 
 Formed by a very complex, fast, RFC compliant regex that effectively validates any email address. Returns true is valid.
 
+
 =head2 is_empty
 
 C<is_empty($value)>
 
 Returns true if $value is equal en an empty string (C<''>) or $value is undefined.
+
 
 =head2 is_filehandle
 
@@ -329,11 +354,13 @@ C<is_filehandle($value)>
 
 Returns true if $value is a valid filehandle.
 
+
 =head2 is_format
 
 C<is_format($object)>
 
 Returns true if C<$object> is a pure formatref. See also L<isa_format|Perlmazing/isa_format>.
+
 
 =head2 is_glob
 
@@ -341,11 +368,13 @@ C<is_glob($object)>
 
 Returns true if C<$object> is a pure globref. See also L<isa_glob|Perlmazing/isa_glob>.
 
+
 =head2 is_hash
 
 C<is_hash($object)>
 
 Returns true if C<$object> is a pure hashref. See also L<isa_hash|Perlmazing/isa_hash>.
+
 
 =head2 is_io
 
@@ -353,17 +382,20 @@ C<is_io($object)>
 
 Returns true if C<$object> is a pure ioref. See also L<isa_io|Perlmazing/isa_io>.
 
+
 =head2 is_leap_year
 
 C<is_leap_year($year)>
 
 Same as L<Time::Precise::is_leap_year()|Time::Precise/is_leap_year>. Returns true if C<$year> is a leap year.
 
+
 =head2 is_lvalue
 
 C<is_lvalue($object)>
 
 Returns true if C<$object> is a pure lvalueref. See also L<isa_lvalue|Perlmazing/isa_lvalue>.
+
 
 =head2 is_number
 
@@ -373,11 +405,13 @@ Returns true if $value can be interpreted as a number. It is intended to work wi
 would take as a number if it was actual code, meaning that if it is a valid numeric expresion (whatever format) to
 Perl, then this function should return true too.
 
+
 =head2 is_ref
 
 C<is_ref($object)>
 
 Returns true if C<$object> is a pure refref. See also L<isa_ref|Perlmazing/isa_ref>.
+
 
 =head2 is_regexp
 
@@ -385,11 +419,13 @@ C<is_regexp($object)>
 
 Returns true if C<$object> is a pure regexpref. See also L<isa_regexp|Perlmazing/isa_regexp>.
 
+
 =head2 is_scalar
 
 C<is_scalar($object)>
 
 Returns true if C<$object> is a pure scalarref. See also L<isa_scalar|Perlmazing/isa_scalar>.
+
 
 =head2 is_utf8
 
@@ -398,17 +434,20 @@ C<is_utf8($string)>
 Returns true if C<$string> has valid UTF8 encodings. Basically, if C<Encode::decode('utf8', $str, Encode::FB_CROAK)> doesn't
 throw an error and only if the resulting value is different from $string, it will return true.
 
+
 =head2 is_valid_date
 
 C<is_valid_date($year, $month, $day)>
 
 Same as L<Time::Precise::is_valid_date()|Time::Precise/is_valid_date>. Returns true if the values passed for C<$year>, C<$month> and C<$day> form together a valid date.
 
+
 =head2 is_vstring
 
 C<is_vstring($object)>
 
 Returns true if C<$object> is a pure vstringref. See also L<isa_vstring|Perlmazing/isa_vstring>.
+
 
 =head2 isa_array
 
@@ -417,12 +456,14 @@ C<isa_array($object)>
 Works just like L<is_array|Perlmazing/is_array>, except it will return true even if the reference is not pure
 (e.g. it's blessed into something).
 
+
 =head2 isa_code
 
 C<isa_code($object)>
 
 Works just like L<is_code|Perlmazing/is_code>, except it will return true even if the reference is not pure
 (e.g. it's blessed into something).
+
 
 =head2 isa_format
 
@@ -431,12 +472,14 @@ C<isa_format($object)>
 Works just like L<is_format|Perlmazing/is_format>, except it will return true even if the reference is not pure
 (e.g. it's blessed into something).
 
+
 =head2 isa_glob
 
 C<isa_glob($object)>
 
 Works just like L<is_glob|Perlmazing/is_glob>, except it will return true even if the reference is not pure
 (e.g. it's blessed into something).
+
 
 =head2 isa_hash
 
@@ -445,12 +488,14 @@ C<isa_hash($object)>
 Works just like L<is_hash|Perlmazing/is_hash>, except it will return true even if the reference is not pure
 (e.g. it's blessed into something).
 
+
 =head2 isa_io
 
 C<isa_io($object)>
 
 Works just like L<is_io|Perlmazing/is_io>, except it will return true even if the reference is not pure
 (e.g. it's blessed into something).
+
 
 =head2 isa_lvalue
 
@@ -459,12 +504,14 @@ C<isa_lvalue($object)>
 Works just like L<is_lvalue|Perlmazing/is_lvalue>, except it will return true even if the reference is not pure
 (e.g. it's blessed into something).
 
+
 =head2 isa_ref
 
 C<isa_ref($object)>
 
 Works just like L<is_ref|Perlmazing/is_ref>, except it will return true even if the reference is not pure
 (e.g. it's blessed into something).
+
 
 =head2 isa_regexp
 
@@ -473,12 +520,14 @@ C<isa_regexp($object)>
 Works just like L<is_regexp|Perlmazing/is_regexp>, except it will return true even if the reference is not pure
 (e.g. it's blessed into something).
 
+
 =head2 isa_scalar
 
 C<isa_scalar($object)>
 
 Works just like L<is_scalar|Perlmazing/is_scalar>, except it will return true even if the reference is not pure
 (e.g. it's blessed into something).
+
 
 =head2 isa_vstring
 
@@ -487,6 +536,7 @@ C<isa_vstring($object)>
 Works just like L<is_vstring|Perlmazing/is_vstring>, except it will return true even if the reference is not pure
 (e.g. it's blessed into something).
 
+
 =head2 list_context
 
 C<list_context()>
@@ -494,14 +544,17 @@ C<list_context()>
 This function is meant to be called inside of a subroutine. It will return true if the subroutine was called in list context.
 See also L<void_context|Perlmazing/void_context> and L<scalar_context|Perlmazing/scalar_context>.
 
+
 =head2 localtime
 
 Same as L<Time::Precise::localtime()|Time::Precise/localtime>. Works as the core C<localtime>, except it returns nanoseconds
 and full year too.
 
+
 =head2 longmess
 
 Same as L<Carp::longmess()|Carp>.
+
 
 =head2 md5
 
@@ -516,6 +569,7 @@ I<Listable function>
 This function returns the I<md5> representation (in hexadecimal) of the passed value(s). It will work as any other I<Listable>
 function from this module.
 
+
 =head2 md5_file
 
 C<md5_file($path_to_file)>
@@ -524,6 +578,7 @@ C<md5_file($file_handle)>
 
 This function will take a C<$path_to_file> or directly a C<$file_handle>, read the contents of the file in binary mode and
 return the I<md5> representation (in hexadecimal) of that file's contents.
+
 
 =head2 merge
 
@@ -562,9 +617,11 @@ the last used one will be the one remaining. For example:
         pet         => 'dog',
     );
 
+
 =head2 mkdir
 
 Works just like Perl's core C<mkdir>, except it will use L<File::Path::make_path()|File::Path> to create any missing directories in the requested path. It will return a list with the directories that were actually created.
+
 
 =head2 no_void
 
@@ -587,6 +644,7 @@ when a certain function will do some time or memory consuming operations in orde
         return time;
     }
 
+
 =head2 not_empty 
 
 C<not_empty($var)>
@@ -608,6 +666,7 @@ This is just an idiomatic way to test if a scalar value is something other than 
     }
     
     # Only key 'filled' will get to say "Key filled contains Hello!"
+
 
 =head2 numeric
 
@@ -707,6 +766,7 @@ This sort order will also work for mixed cases between numeric and non-numeric c
     # book_1_page_2
     # book_1_page_3
 
+
 =head2 pl
 
 C<pl "something">
@@ -748,6 +808,7 @@ Examples:
     my @r = pl @arr;
     # An element in @r is created for each line that would be printed, including a trailing "\n" in each element
 
+
 =head2 quotes_escape
 
 C<quotes_escape($value)>
@@ -759,6 +820,7 @@ C<my @result = quotes_escape(@values)>
 I<Listable function>
 
 This is a very simple function that escapes with a backslash any match of the symbol C<">. Works as any other I<listable> function from this module.
+
 
 
 =head2 quote_escape
@@ -794,6 +856,7 @@ A very useful function that will remove dumplicate entries from an array. The be
     remove_duplicates @values;
     # You guessed. @values now has no duplicates (so it's now 1..11).
 
+
 =head2 replace_accented_characters
 
 C<replace_accented_characters($value)>
@@ -807,9 +870,11 @@ I<Listable function>
 This function replaces any accented character (such as accented vowels in spanish) with it's closest representation in standard english alphabeth. For example, the character C<á> is replaced with a simple C<a>,
 or the character C<ü> is replaced with a simple C<u>. It works as any other I<listable> function from this module.
 
+
 =head2 rmdir
 
 Works like core C<rmdir>, except it will remove the requested dir even if it's not empty.
+
 
 =head2 scalar_context
 
@@ -824,13 +889,16 @@ This function is meant to be used from inside a subroutine. It will return true 
         return @array;
     }
 
+
 =head2 shortmess
 
 Same as L<Carp::shortmess()|Carp>.
 
+
 =head2 shuffle
 
 Same as L<List::Util::shuffle()|List::Util>.
+
 
 =head2 sleep
 
@@ -844,6 +912,7 @@ Same as core C<sleep>, except it will accept fractions and behave accordingly. E
     # Sleep a second and a half:
     sleep 1.5;
 
+
 =head2 slurp
 
 C<slurp($path_to_file)>
@@ -853,6 +922,7 @@ This function will efficiently read and return the content of a file. Example:
     use Perlmazing;
     
     my $data = slurp 'some/file.txt';
+
 
 =head2 sort_by_key
 
@@ -873,9 +943,11 @@ Otherwise it will return a series of key-value pairs if called in list context, 
         say "$sorted[$i]: $sorted[$i + 1]";
     }
 
+
 =head2 sort_by_value
 
 This is the same as the previously explained <sort_by_key|Perlmazing/sort_by_key> function, except it will sort its argument by value instead of by key.
+
 
 =head2 taint
 
@@ -889,13 +961,16 @@ I<Listable function>
 
 Same as L<Taint::Util::taint()|Taint::Util> - except that it is a I<listable> function and it will behave like any other I<listable> function from this module.
 
+
 =head2 tainted
 
 Same as L<Taint::Util::tainted()|Taint::Util>.
 
+
 =head2 time
 
 Same as core C<time>, except it will include decimals for nanoseconds.
+
 
 =head2 time_hashref
 
@@ -920,13 +995,16 @@ The following is an example of a hashref returned by this function:
       year         => 2016,
     }
 
+
 =head2 timegm
 
 Same as L<Time::Local::timegm()|Time::Local>, except it will include nanoseconds in its return value.
 
+
 =head2 timelocal
 
 Same as L<Time::Local::timelocal()|Time::Local>, except it will include nanoseconds in its return value.
+
 
 =head2 to_utf8
 
@@ -940,6 +1018,7 @@ I<Listable function>
 
 This is short for C<Encode::encode('utf8', $_[0]) if defined $_[0] and not is_utf8 $_[0]>, using L<Encode::encode()|Encode>. It is a I<listable> function and will behave like any other
 I<listable> function from this module.
+
 
 =head2 trim
 
@@ -959,6 +1038,7 @@ A very usefull function to remove any whitespace from the beginning or the endin
     trim @lines;
     
     # Now each element of @lines is trimmed.
+
 
 =head2 truncate_text
 
@@ -1042,6 +1122,7 @@ I<Listable function>
 
 This is the I<undo> function for L<escape_html|Perlmazing/escape_html>. It is a I<listable> function and it will behave like any other I<listable> function from this module.
 
+
 =head2 unescape_uri
 
 C<unescape_uri($value)>
@@ -1054,6 +1135,7 @@ I<Listable function>
 
 This is the I<undo> function for L<escape_uri|Perlmazing/escape_uri>. It is a I<listable> function and it will behave like any other I<listable> function from this module.
 
+
 =head2 untaint
 
 C<untaint($value)>
@@ -1065,6 +1147,7 @@ C<my @result = untaint(@values)>
 I<Listable function>
 
 This is the I<undo> function for L<taint|Perlmazing/taint>. It is a I<listable> function and it will behave like any other I<listable> function from this module.
+
 
 =head2 void_context 
 
@@ -1087,15 +1170,18 @@ This function is meant to be called from inside a subroutine. It will return tru
         return (1..10) if list_context;
     }
 
+
 =head1 AUTHOR
 
 Francisco Zarabozo, C<< <zarabozo at cpan.org> >>
+
 
 =head1 BUGS
 
 Please report any bugs or feature requests to C<bug-perlmazing at rt.cpan.org>, or through
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Perlmazing>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
+
 
 =head1 SUPPORT
 
