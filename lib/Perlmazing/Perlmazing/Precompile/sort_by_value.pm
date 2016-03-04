@@ -1,4 +1,5 @@
 BEGIN {
+	no warnings;
 	eval 'sub test_prototype (+) { 1 }; test_prototype(1);';
 	undef *test_prototype;
 	if (my $e = $@) {

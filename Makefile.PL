@@ -11,12 +11,11 @@ my %dependencies = (
 	'Data::Dump' => 0,
 	'Digest::MD5' => 0,
 	'Encode' => 0,
-	'Encoding' => 0,
 	'File::Copy::Recursive' => 0,
 	'File::Path' => 0,
 	'List::Util' => 0,
 	'Scalar::Util' => 0,
-	'Submodules' => 0,
+	'Submodules' => '1.0012',
 	'Taint::Util' => 0,
 	'Time::Precise' => 0,
 	'URI::Escape' => 0,
@@ -25,8 +24,8 @@ my %dependencies = (
 	'warnings' => 0,
 );
 
-WriteMakefile(
-    NAME             => 'Perlmazing',
+my %params = (
+	NAME             => 'Perlmazing',
     AUTHOR           => q{Francisco Zarabozo <zarabozo@cpan.org>},
     VERSION_FROM     => 'lib/Perlmazing.pm',
     ABSTRACT_FROM    => 'lib/Perlmazing.pm',
@@ -48,3 +47,7 @@ WriteMakefile(
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES => 'Perlmazing-*' },
 );
+
+delete $params{TEST_REQUIRES} unless ExtUtils::MakeMaker->VERSION >= 6.64;
+
+WriteMakefile(%params);

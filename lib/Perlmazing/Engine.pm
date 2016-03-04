@@ -5,7 +5,7 @@ use Carp;
 use Scalar::Util qw(set_prototype);
 use Taint::Util 'untaint';
 use Data::Dump 'dump';
-our $VERSION = '1.2804';
+our $VERSION = '1.2806';
 my $found_symbols;
 my $loaded_symbols;
 my $precompile_symbols;

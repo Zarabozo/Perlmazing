@@ -6,3 +6,5 @@ Revision history for Perlmazing
          Minor adjustments for PAUSE
 1.2804   2016-02-24
          Bugfix for older Perl versions
+1.2806   2016-02-25
+         Bugfix for older Perl versions
