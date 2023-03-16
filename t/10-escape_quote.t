@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use Test::More tests => 16;
 use Perlmazing;
-
+print $Perlmazing::VERSION."\n";
 my @cases = (
 	[q[Hello world!], 'Hello world!', 'simple string'],
 	[q[Hello world! Let's go places.], q[Hello world! Let\'s go places.], 'sudden quote in string'],
@@ -14,15 +14,15 @@ my @cases = (
 );
 
 for my $i (@cases) {
-	is quote_escape($i->[0]), $i->[1], $i->[2];
+	is escape_quote($i->[0]), $i->[1], $i->[2];
 	$i->[2] = 'now as assignment';
-	my $r = quote_escape $i->[0];
+	my $r = escape_quote $i->[0];
 	is $r, $i->[1], $i->[2];
 	SKIP: {
 		skip($r, 1) if $r !~ /'/;
 		isnt ($r, $i->[0], 'original untouched') 
 	}
 	$i->[2] = 'now as direct action';
-	quote_escape $i->[0];
+	escape_quote $i->[0];
 	is $i->[0], $i->[1], $i->[2];
 }
