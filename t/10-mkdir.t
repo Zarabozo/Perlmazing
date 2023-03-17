@@ -4,7 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 use Test::More tests => 3;
-use Perlmazing;
+use Perlmazing qw(rmdir mkdir dir);
 use File::Spec;
 
 my $dir = 'mkdir_test_directory';
