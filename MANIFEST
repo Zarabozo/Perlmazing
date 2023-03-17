@@ -2,8 +2,6 @@ Changes
 MANIFEST
 META.json
 META.yml
-MYMETA.json
-MYMETA.yml
 Makefile.PL
 README
 pm_to_blib
