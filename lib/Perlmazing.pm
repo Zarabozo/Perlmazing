@@ -3,8 +3,11 @@ use Perlmazing::Engine;
 use Perlmazing::Engine::Exporter;
 use Perlmazing::Feature;
 our $VERSION = '1.2816';
-our @EXPORT;
+our @EXPORT = qw(pl dumped define time localtime);
 our @found_symbols = Perlmazing::Engine->found_symbols;
+our %EXPORT_TAGS = (
+    all => \@found_symbols,
+);
 
 Perlmazing::Engine->precompile;
 
@@ -21,7 +24,6 @@ sub import {
 	Perlmazing::Feature->import;
 	warnings->import(FATAL => qw(closed unopened numeric recursion syntax uninitialized));
 	if (@_) {
-		@EXPORT = ();
 		my (@YES, @NO);
 		for my $i (@_) {
 			if ($i =~ /^!(.*?)$/) {
@@ -31,19 +33,15 @@ sub import {
 			}
 		}
 		for my $i (@YES, @NO) {
-			croak "Symbol '$i' is not exported by the Perlmazing module" unless grep {$i eq $_} @found_symbols;
+			croak "Symbol '$i' is not exported by the Perlmazing module" unless (grep {$i eq ":$_"} keys %EXPORT_TAGS) or (grep {$i eq $_} @found_symbols);
 		}
 		if (@YES and @NO) {
 			@EXPORT = @YES;
 		} elsif (@YES) {
-			@EXPORT = @YES;
-		} else {
-			for my $i (@found_symbols) {
-				push (@EXPORT, $i) unless grep {$_ eq $i} @NO;
-			}
+            for my $i (@YES) {
+                push (@EXPORT, $i) unless grep {$i eq $_} @EXPORT;
+            }
 		}
-	} else {
-		@EXPORT = @found_symbols;
 	}
 	$self->SUPER::import;
 }

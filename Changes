@@ -47,3 +47,10 @@ Revision history for Perlmazing
 	Fixed warning in dir, which pointed to the dir file instad of the user file.
 1.2816  2021-04-18
 	Updated Makefile.PL to require Submodules 1.0015, which resolves issues with this update.
+2.0002  2023-03-16
+    Very important change: Perlmazing no longer exports everything by default. Only 'pl', 'dumped' and 'define', 'time',
+    'localtime' are default now.
+        You now need to explicitly import the symbols you want, or import the tag ':all'. For 'pl', 'dumped' and 'define',
+        if you don't want them imported, you either need to "use Perlmazing ()" to avoid any imports, or explicitly say "!symbol".
+    Updated list of dependencies that were causing installation problems in some platforms.
+    
