@@ -63,7 +63,7 @@ being used and maybe look at the source code of this module to see how simple it
 this example.
 
 As an additional benefit, this module automatically C<use>s and C<import>s L<Perlmazing::Feature>, which basically will
-enable C<strict> and C<warnings FATAL => 'all'>, along with the most recent features your version of Perl can enable.
+enable C<strict> and C<warnings FATAL => qw(closed unopened numeric recursion syntax uninitialized)>, along with the most recent features your version of Perl can enable.
 
 How this module works at the end:
 
