@@ -4,7 +4,6 @@ META.json
 META.yml
 Makefile.PL
 README
-pm_to_blib
 test_copy.txt
 test_file.txt
 lib/Perlmazing/Engine/Exporter.pm
