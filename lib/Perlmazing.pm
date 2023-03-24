@@ -65,14 +65,17 @@ this example.
 As an additional benefit, this module automatically C<use>s and C<import>s L<Perlmazing::Feature>, which basically will
 enable C<strict> and C<warnings FATAL => qw(closed unopened numeric recursion syntax uninitialized)>, along with the most recent features your version of Perl can enable.
 
+Currently, the maximum version features we enable here is 5.028, as some of the later versions of Perl have features that can cause unexpected compatibility problems.
+You can set the value of $Perlmazing::Feature::VERSION to $] or to any other limit if you want.
+
 How this module works at the end:
 
-    use Perlmazing;
+    use Perlmazing; # or use Perlmazing qw(function1 function2 ...);
     
     # First of all, Perlmazing::Feature is automatically imported,
     # so warnings and strict are automatically enabled and also
     # any features that your version of Perl can have (similar to
-    # "use $]", if only that was a valid call).
+    # "use $]" (maxed to 5.028), if only that was a valid call)
     
     # Now all helper functions are available. Yes, it exports
     # all symbols by default. Please read the rest of this POD
