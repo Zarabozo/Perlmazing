@@ -3,7 +3,7 @@ use Perlmazing::Engine;
 use Perlmazing::Engine::Exporter;
 use Perlmazing::Feature;
 use Win32::Symlinks;
-our $VERSION = '1.2816';
+our $VERSION = '2.0002';
 our @EXPORT = qw(pl dumped define time localtime gmtime mkdir rmdir sleep);
 our @found_symbols = Perlmazing::Engine->found_symbols;
 our %EXPORT_TAGS = (
