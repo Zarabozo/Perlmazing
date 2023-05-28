@@ -3,7 +3,7 @@ use lib '../lib';
 use 5.006;
 use strict;
 use warnings;
-use Test::More tests => 3;
+use Test::More tests => 4;
 use Perlmazing qw(rmdir mkdir dir);
 use File::Spec;
 
@@ -32,3 +32,4 @@ if (-e $dir) {
 }
 
 is ((-e $dir), undef, "$dir deleted successfully");
+isnt rmdir('mkdir_test'), undef, "Deleted mktest_dir";

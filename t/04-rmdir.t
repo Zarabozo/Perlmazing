@@ -3,7 +3,7 @@ use lib '../lib';
 use 5.006;
 use strict;
 use warnings;
-use Test::More tests => 5;
+use Test::More tests => 13;
 use Perlmazing qw(rmdir pl);
 use File::Spec;
 
