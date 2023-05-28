@@ -3,8 +3,8 @@ use Perlmazing::Engine;
 use Perlmazing::Engine::Exporter;
 use Perlmazing::Feature;
 use Win32::Symlinks;
-our $VERSION = '2.0002';
-our @EXPORT = qw(pl dumped define time localtime gmtime mkdir rmdir sleep);
+our $VERSION = '2.0006';
+our @EXPORT = qw(pl dumped define time localtime gmtime mkdir rmdir sleep stat);
 our @found_symbols = Perlmazing::Engine->found_symbols;
 our %EXPORT_TAGS = (
     all => \@found_symbols,
@@ -1057,7 +1057,7 @@ C<my @result = replace_accented_characters(@values)>
 I<Listable function>
 
 This function replaces any accented character (such as accented vowels in spanish) with it's closest representation in standard english alphabeth. For example, the character C<E<aacute>> is replaced with a simple C<a>,
-or the character C<ü> is replaced with a simple C<u>. It works as any other I<listable> function from this module.
+or the character C<E<uuml>> is replaced with a simple C<u>. It works as any other I<listable> function from this module.
 
 
 =head2 rmdir

@@ -61,4 +61,8 @@ Revision history for Perlmazing
     Added stat function. Works the same as CORE::stat, except it will give you an object you can call methods on when assigned
         to a scalar.
     Fixed some issues in the POD, related to links containing ->, which wasn't properly escaped.
-    
+2.0004
+    Small changes in POD and stat t file.
+2.0006
+    Missing update in this file.
+    Missing update in MANIFEST for stat.pm

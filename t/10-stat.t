@@ -4,7 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 use Test::More tests => 15;
-use Perlmazing qw(stat);
+use Perlmazing;
 
 my $stat_1 = stat $0;
 my $stat_2 = CORE::stat $0;

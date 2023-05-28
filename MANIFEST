@@ -105,6 +105,7 @@ lib/Perlmazing/Perlmazing/shuffle.pm
 lib/Perlmazing/Perlmazing/slurp.pm
 lib/Perlmazing/Perlmazing/splitdir.pm
 lib/Perlmazing/Perlmazing/splitpath.pm
+lib/Perlmazing/Perlmazing/stat.pm
 lib/Perlmazing/Perlmazing/taint.pm
 lib/Perlmazing/Perlmazing/tainted.pm
 lib/Perlmazing/Perlmazing/to_number.pm
