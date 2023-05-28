@@ -2,6 +2,7 @@ package Perlmazing;
 use Perlmazing::Engine;
 use Perlmazing::Engine::Exporter;
 use Perlmazing::Feature;
+use Win32::Symlinks;
 our $VERSION = '1.2816';
 our @EXPORT = qw(pl dumped define time localtime);
 our @found_symbols = Perlmazing::Engine->found_symbols;
@@ -1058,7 +1059,7 @@ or the character C<ü> is replaced with a simple C<u>. It works as any other I<li
 
 =head2 rmdir
 
-Works like core C<rmdir>, except it will remove the requested dir even if it's not empty.
+Works like core C<rmdir>, except it will remove the requested dir even if it's not empty. Symlinks are just removed, without parsing and deleting their contents, as it should be.
 
 
 =head2 scalar_context

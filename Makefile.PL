@@ -27,6 +27,7 @@ my %dependencies = (
     'URI::Escape'           => 0,
     'version'               => 0,
     'warnings'              => 0,
+    'Win32::Symlinks'       => '0.10',
 );
 
 my %params = (
