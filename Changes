@@ -55,5 +55,7 @@ Revision history for Perlmazing
     Updated list of dependencies that were causing installation problems in some platforms.
     Important change: Perlmazing previously would enable all the latest features of the Perl version it was running on. That
     was a terrible idea from the start. It now has a version limit, that can be changed, set by default to 5.028.
-    
+    Important change: rmdir was previously using File::Path::remove_tree, but we are now using our own implementation, since
+    File::Path is deleting the contents of symlinked directories, at least on Win32. This implementation correctly removes
+    symlinks on any OS instead of parsing its contents to delete them.
     
