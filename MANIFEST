@@ -183,6 +183,7 @@ t/10-scalar_context.t
 t/10-slurp.t
 t/10-sort_by_key.t
 t/10-sort_by_value.t
+t/10-stat.t
 t/10-to_utf8.t
 t/10-trim.t
 t/10-truncate_text.t

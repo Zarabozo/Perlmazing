@@ -4,7 +4,7 @@ use Perlmazing::Engine::Exporter;
 use Perlmazing::Feature;
 use Win32::Symlinks;
 our $VERSION = '1.2816';
-our @EXPORT = qw(pl dumped define time localtime);
+our @EXPORT = qw(pl dumped define time localtime gmtime mkdir rmdir sleep);
 our @found_symbols = Perlmazing::Engine->found_symbols;
 our %EXPORT_TAGS = (
     all => \@found_symbols,
@@ -50,7 +50,7 @@ sub import {
 1;
 
 __END__
-=pod
+
 =head1 NAME
 
 Perlmazing - A collection of helper functions powered by Perlmazing::Engine.
@@ -87,8 +87,11 @@ How this module works at the end:
 
 =head1 EXPORT
 
-In the case of this module, all documented functions are exported by default, but that doesn't mean
-you have to work like that in your own module when using L<Perlmazing::Engine>. It also doesn't mean
+In the case of this module, all documented functions are exported by default in versions previous to v2.
+Beggining with v2, only 'pl', 'dumped', 'define' are default now. Also, any function that matches a CORE
+function name (e.g. time, rmdir, stat, etc).
+        
+That doesn't mean you have to work like that in your own module when using L<Perlmazing::Engine>. It also doesn't mean
 that those functions are actually loaded into memory, they are just available to the caller and will
 be loaded and processed as soon as the caller actually calls one of them. Please read the documentation
 of L<Perlmazing::Engine> to learn more about it.
@@ -152,7 +155,7 @@ of that.
 
 =head2 abs2rel
 
-Same as L<File::Spec->abs2rel()|File::Spec>. Just much more readable and easier/shorter to type.
+Same as L<File::Spec-E<gt>abs2rel()|File::Spec>. Just much more readable and easier/shorter to type.
 
 
 =head2 aes_decrypt
@@ -191,17 +194,17 @@ Same as L<Carp::carp()|Carp>.
 
 =head2 catdir
 
-Same as L<File::Spec->catdir()|File::Spec>. Just much more readable and easier/shorter to type.
+Same as L<File::Spec-E<gt>catdir()|File::Spec>. Just much more readable and easier/shorter to type.
 
 
 =head2 catfile
 
-Same as L<File::Spec->catfile()|File::Spec>. Just much more readable and easier/shorter to type.
+Same as L<File::Spec-E<gt>catfile()|File::Spec>. Just much more readable and easier/shorter to type.
 
 
 =head2 catpath
 
-Same as L<File::Spec->catpath()|File::Spec>. Just much more readable and easier/shorter to type.
+Same as L<File::Spec-E<gt>catpath()|File::Spec>. Just much more readable and easier/shorter to type.
 
 
 =head2 cluck
@@ -321,7 +324,7 @@ Converts any undefined element into an empty string. Useful when purposely avoid
 
 =head2 devnull
 
-Same as L<File::Spec->devnull()|File::Spec>. Just much more readable and easier/shorter to type.
+Same as L<File::Spec-E<gt>devnull()|File::Spec>. Just much more readable and easier/shorter to type.
 
 
 =head2 dir
@@ -1011,7 +1014,7 @@ Examples:
 
 =head2 rel2abs
 
-Same as L<File::Spec->rel2abs()|File::Spec>. Just much more readable and easier/shorter to type.
+Same as L<File::Spec-E<gt>rel2abs()|File::Spec>. Just much more readable and easier/shorter to type.
 
 
 =head2 remove_duplicates
@@ -1053,7 +1056,7 @@ C<my @result = replace_accented_characters(@values)>
 
 I<Listable function>
 
-This function replaces any accented character (such as accented vowels in spanish) with it's closest representation in standard english alphabeth. For example, the character C<á> is replaced with a simple C<a>,
+This function replaces any accented character (such as accented vowels in spanish) with it's closest representation in standard english alphabeth. For example, the character C<E<aacute>> is replaced with a simple C<a>,
 or the character C<ü> is replaced with a simple C<u>. It works as any other I<listable> function from this module.
 
 
@@ -1139,12 +1142,43 @@ This is the same as the previously explained L<sort_by_key|Perlmazing/sort_by_ke
 
 =head2 splitidir
 
-Same as L<File::Spec->splitdir()|File::Spec>. Just much more readable and easier/shorter to type.
+Same as L<File::Spec-E<gt>splitdir()|File::Spec>. Just much more readable and easier/shorter to type.
 
 
 =head2 splitpath
 
-Same as L<File::Spec->splitpath()|File::Spec>. Just much more readable and easier/shorter to type.
+Same as L<File::Spec-E<gt>splitpath()|File::Spec>. Just much more readable and easier/shorter to type.
+
+
+=head2 stat
+
+Same as Perl's core L<stat>, except that, when assigned to a scalar, you get an object you can call methods on. If stringified, it will have the same value as what you would get originally with stat assigning a scalar. The names of those methods are unchanged in respect to the Perldoc's definitions. Valid methods are:
+
+    dev
+    ino
+    mode
+    nlink
+    uid
+    gid
+    rdev
+    size
+    atime
+    mtime
+    ctime
+    blksize
+    blocks
+
+Example:
+
+    use Perlmazing;
+    
+    my $s = stat 'some_file.log';
+    
+    # As an interpolated value:
+    pl "Last modified time was $s->{mtime}";
+    
+    # As a method:
+    pl "Last modified time was ".$s->mtime;
 
 
 =head2 taint
