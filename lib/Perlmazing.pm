@@ -3,7 +3,7 @@ use Perlmazing::Engine;
 use Perlmazing::Engine::Exporter;
 use Perlmazing::Feature;
 use Win32::Symlinks;
-our $VERSION = '2.0010';
+our $VERSION = '2.0012';
 our @found_symbols = Perlmazing::Engine->found_symbols;
 our %EXPORT_TAGS = (
   all => \@found_symbols,
@@ -67,11 +67,7 @@ How this module works at the end:
   # any features that your version of Perl can have (similar to
   # "use $]" (maxed to 5.028), if only that was a valid call)
   
-  # Now all helper functions are available. Yes, it exports
-  # all symbols by default. Please read the rest of this POD
-  # to understand why and when it's considered a good thing.
-  
-  # Now use any of the helper functions from this module freely!
+  # Please read on the next section to learn about exported symbols.
     
 
 =head1 EXPORT
@@ -1555,18 +1551,6 @@ You can also look for information at:
 =item * RT: CPAN's request tracker (report bugs here)
 
 L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Perlmazing>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Perlmazing>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Perlmazing>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/Perlmazing/>
 
 =back
 
