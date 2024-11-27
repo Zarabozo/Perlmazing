@@ -3,7 +3,7 @@ use Perlmazing::Engine;
 use Perlmazing::Engine::Exporter;
 use Perlmazing::Feature;
 use Win32::Symlinks;
-our $VERSION = '2.0008';
+our $VERSION = '2.0010';
 our @found_symbols = Perlmazing::Engine->found_symbols;
 our %EXPORT_TAGS = (
   all => \@found_symbols,
@@ -98,33 +98,43 @@ functions imported, then you have two options:
 You have these export tags available for convenience (since version 2.008):
 
 :default
+
   define, dumped, gmtime, localtime, mkdir, pl, rmdir, sleep, stat, time
 
 :all
+
   _is_ref, _isa_ref, abs2rel, abs_path, aes_decrypt, aes_encrypt, basename, carp, catdir, catfile, catpath, cluck, commify, confess, copy, croak, cwd, define, devnull, dir, dirname, dumped, empty_dir, escape_html, escape_quote, escape_quotes, escape_uri, eval_string, find_parent_classes, get_aes_cipher, get_time_from, gmtime, gmtime_hashref, in_array, is_array, is_blessed, is_code, is_email_address, is_empty, is_filehandle, is_format, is_glob, is_hash, is_io, is_leap_year, is_lvalue, is_number, is_ref, is_regexp, is_scalar, is_utf8, is_valid_date, is_vstring, isa_array, isa_code, isa_filehandle, isa_format, isa_glob, isa_hash, isa_io, isa_lvalue, isa_ref, isa_regexp, isa_scalar, isa_vstring, list_context, localtime, longmess, md5, md5_file, merge, mkdir, move, no_void, not_empty, numeric, pl, rel2abs, remove_duplicates, replace_accented_characters, rmdir, scalar_context, shortmess, shuffle, sleep, slurp, sort_by_key, sort_by_value, splitdir, splitpath, stat, taint, tainted, time, time_hashref, timegm, timelocal, to_number, to_string, to_utf8, trim, truncate_text, unescape_html, unescape_uri, untaint, unweaken, void_context, weaken
 
 :context
+
   list_context, no_void, scalar_context, void_context
 
 :crypt
+
   aes_decrypt, aes_encrypt, md5, md5_file
 
 :error
+
   carp, cluck, confess, croak, longmess, shortmess
 
 :file
+
   abs2rel, basename, catdir, catfile, catpath, copy, cwd, devnull, dir, dirname, empty_dir, move, rel2abs, slurp, splitdir, splitpath, unix_path, windows_path
 
 :object
+
   find_parent_classes, is_array, is_blessed, is_code, is_filehandle, is_format, is_glob, is_hash, is_io, is_lvalue, is_ref, is_regexp, is_scalar, is_vstring, isa_array, isa_code, isa_filehandle, isa_format, isa_glob, isa_hash, isa_io, isa_lvalue, isa_ref, isa_regexp, isa_scalar, isa_vstring, unbless
 
 :string
+
   commify, escape_html, escape_quote, escape_quotes, escape_uri, eval_string, is_email_address, is_empty, is_number, is_utf8, not_empty, numeric, replace_accented_characters, to_number, to_string, to_utf8, trim, truncate_text, unescape_html, unescape_uri
 
 :time
+
   get_time_from, gmtime_hashref, is_leap_year, is_valid_date, time_hashref, timegm, timelocal
 
 :variables
+
   in_array, merge, remove_duplicates, shuffle, sort_by_key, sort_by_value, taint, tainted, untaint
 
 All this doesn't mean you have to work like that in your own module when using L<Perlmazing::Engine>. It also doesn't mean
@@ -1520,7 +1530,8 @@ See also L<unix_path|Perlmazing/unix_path>.
 
 =head1 AUTHOR
 
-Francisco Zarabozo, C<< <zarabozo at cpan.org> >>
+Francisco Zarabozo, C<< <zarabozo at cpan.org> >>. Please take a look at the modules mentioned on many on the functions of this POD
+to see the author/credits for those modules.
 
 
 =head1 BUGS
