@@ -66,3 +66,15 @@ Revision history for Perlmazing
 2.0006
     Missing update in this file.
     Missing update in MANIFEST for stat.pm
+2.0008
+    Removed unecessary dependencies from Makefile.PL
+    Fixed bug in function dir, it was assuming non existing directories as '.'.
+    Added new export tags.
+    Fixed several bugs related to Perlmazing::Engine::Exporter. It should now behave properly in all cases.
+    Fixed all the cases where Perlmazing's function files were not properly importing the symbols they need to run.
+    Fixed test cases that started to fail once the previous fixes were in place.
+    Fixed some errors/mispellings in the documentation.
+    Added windows_path and unix_path functions.
+    Fixed wrong sorting for "numeric" (upper/lower-case was taking precedence in a wrong way)
+    Added the unbless function from Data::Structure::Util
+    Improved the slurp function to do-what-you-mean in list context.

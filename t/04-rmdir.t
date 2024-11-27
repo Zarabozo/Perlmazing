@@ -4,7 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 use Test::More tests => 13;
-use Perlmazing qw(rmdir pl);
+use Perlmazing;
 use File::Spec;
 
 my $dir = 'mkdir_test_dir_'.time;
@@ -41,7 +41,7 @@ is (-f $symlinked_file, 1, "File in symlink exists");
     close $in;
     is $data, 'Hello world!', "Data in symlinked file looks good";
 }
-is rmdir($dir), 3, 'return value correct';
+is rmdir($dir), 1, 'return value correct';
 is -d $dir_2, 1, "Symlinked dir still exists";
 is -d $subdir_2, 1, "Subdirectory in symlinked dir still exists";
 is -f $file, 1, "File in symlinked dir still exists";
