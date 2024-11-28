@@ -83,4 +83,5 @@ Revision history for Perlmazing
 2.0012  2024-11-28
   Improved documentation.
   Fixed a test for rmdir for a very small set of cases where testers seem to have permission issues when creating a symlink on Win32.
-
+2.0014  2024-11-28
+  Added localtime_ts and gmtime_ts functions.

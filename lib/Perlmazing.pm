@@ -3,7 +3,7 @@ use Perlmazing::Engine;
 use Perlmazing::Engine::Exporter;
 use Perlmazing::Feature;
 use Win32::Symlinks;
-our $VERSION = '2.0012';
+our $VERSION = '2.0014';
 our @found_symbols = Perlmazing::Engine->found_symbols;
 our %EXPORT_TAGS = (
   all => \@found_symbols,
@@ -14,7 +14,7 @@ our %EXPORT_TAGS = (
   file => [qw(abs2rel basename catdir catfile catpath copy cwd devnull dir dirname empty_dir move rel2abs slurp splitdir splitpath unix_path windows_path )],
   object => [qw(find_parent_classes is_array is_blessed is_code is_filehandle is_format is_glob is_hash is_io is_lvalue is_ref is_regexp is_scalar is_vstring isa_array isa_code isa_filehandle isa_format isa_glob isa_hash isa_io isa_lvalue isa_ref isa_regexp isa_scalar isa_vstring unbless )],
   string => [qw(commify escape_html escape_quote escape_quotes escape_uri eval_string is_email_address is_empty is_number is_utf8 not_empty numeric replace_accented_characters to_number to_string to_utf8 trim truncate_text unescape_html unescape_uri )],
-  time => [qw(get_time_from gmtime_hashref is_leap_year is_valid_date time_hashref timegm timelocal )],
+  time => [qw(get_time_from gmtime_hashref is_leap_year is_valid_date time_hashref timegm timelocal localtime_ts gmtime_ts)],
   variables => [qw(in_array merge remove_duplicates shuffle sort_by_key sort_by_value taint tainted untaint )],
 );
 our @EXPORT = @{$EXPORT_TAGS{default}};
@@ -127,7 +127,7 @@ You have these export tags available for convenience (since version 2.008):
 
 :time
 
-  get_time_from, gmtime_hashref, is_leap_year, is_valid_date, time_hashref, timegm, timelocal
+  get_time_from, gmtime_hashref, gmtime_ts, is_leap_year, is_valid_date, localtime_ts, time_hashref, timegm, timelocal
 
 :variables
 
@@ -522,6 +522,11 @@ Same as L<Time::Precise::get_time_from()|Time::Precise/get_time_from>. Returns t
 Same as L<Time::Precise::gmtime()|Time::Precise/gmtime>. Returns time in seconds including nanoseconds.
 
 
+=head2 gmtime_ts
+
+Same as L<Time::Precise::gmtime_ts()|Time::Precise/gmtime_ts>. Works as C<gmtime>, except it returns a timestamp SQL style (e.g. C<2024-11-27 20:50:30>).
+
+
 =head2 gmtime_hashref
 
 Same as L<Time::Precise::gmtime_hashref()|Time::Precise/gmtime_hashref>. Returns a hashref with current datetime elements.
@@ -788,6 +793,11 @@ See also L<void_context|Perlmazing/void_context> and L<scalar_context|Perlmazing
 
 Same as L<Time::Precise::localtime()|Time::Precise/localtime>. Works as the core C<localtime>, except it returns nanoseconds
 and full year too.
+
+
+=head2 localtime_ts
+
+Same as L<Time::Precise::localtime_ts()|Time::Precise/localtime_ts>. Works as C<localtime>, except it returns a timestamp SQL style (e.g. C<2024-11-27 20:50:30>).
 
 
 =head2 longmess

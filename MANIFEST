@@ -47,6 +47,7 @@ lib/Perlmazing/Perlmazing/pl.pm
 lib/Perlmazing/Perlmazing/Precompile/eval_string.pm
 lib/Perlmazing/Perlmazing/Precompile/get_time_from.pm
 lib/Perlmazing/Perlmazing/Precompile/gmtime.pm
+lib/Perlmazing/Perlmazing/Precompile/gmtime_ts.pm
 lib/Perlmazing/Perlmazing/Precompile/gmtime_hashref.pm
 lib/Perlmazing/Perlmazing/Precompile/in_array.pm
 lib/Perlmazing/Perlmazing/Precompile/isa_array.pm
@@ -81,6 +82,7 @@ lib/Perlmazing/Perlmazing/Precompile/is_valid_date.pm
 lib/Perlmazing/Perlmazing/Precompile/is_vstring.pm
 lib/Perlmazing/Perlmazing/Precompile/list_context.pm
 lib/Perlmazing/Perlmazing/Precompile/localtime.pm
+lib/Perlmazing/Perlmazing/Precompile/localtime_ts.pm
 lib/Perlmazing/Perlmazing/Precompile/merge.pm
 lib/Perlmazing/Perlmazing/Precompile/not_empty.pm
 lib/Perlmazing/Perlmazing/Precompile/numeric.pm
