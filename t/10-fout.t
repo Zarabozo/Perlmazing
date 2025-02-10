@@ -27,3 +27,5 @@ is -f $filename, 1, 'fout created a file';
 my $written_data = slurp $filename, 'utf8';
 
 is $data eq $written_data, 1, 'Written data is a match.';
+
+unlink $filename;
